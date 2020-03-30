@@ -3,9 +3,7 @@
 class Model {
 
     function __construct() {
-      //  $this->db = new Databaseconfig();
-      //  $this->log = new Log();
-      //  $this->map = new Mapping();
+        $this->log = new Logs();
 
     }
 

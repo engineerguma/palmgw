@@ -19,9 +19,13 @@ class Mtnrwanda extends Controller {
     function CompleteDebitRequest($req=false){
 
         $service_id = 2741;
-        $xml_post = file_get_contents('php://input');
-        $log_file_name = $this->model->log->LogXML('req_from_opco', 'MTNMoMo','DSTV', $xml_post);
-        $this->model->ProcessThirdPartyPayment($service_id, $log_file_name);
+        $xml_request = file_get_contents('php://input');
+        $log_file_name = $this->model->log->LogRequest('req_from_mtn',$xml_request,1);
+        $get_http_response_code ='HTTP Response code: 200';
+        echo $get_http_response_code;
+
+      //  echo '<ns0:debitcompletedresponse xmlns:ns0="http://www.ericsson.com/em/emm/callback/v1_0"/>';
+        //$this->model->ProcessThirdPartyPayment($service_id, $log_file_name);
     }
 
 
