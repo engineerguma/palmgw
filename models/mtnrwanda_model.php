@@ -10,6 +10,12 @@ class Mtnrwanda_Model extends Model {
      * Core Merchant Functions
      */
 
+    function ProcessDebitCompleted($request,$log_name){
+
+     $response =$this->SendByGeneralCurl(MTN_REQUEST_URL,$request,$log_name);
+     return $response;
+    }
+
     function ProcessGwDebitRequest($request){
 
     $header=['Authorization: Basic '.base64_encode(MTN_USER.':'.MTN_PASS),
@@ -46,4 +52,33 @@ class Mtnrwanda_Model extends Model {
 
       return $result;
     }
+
+
+    function SendByGeneralCurl($url,$request_data,$log_name){
+
+
+         $this->log->LogRequest($log_name,$request_data,2);
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_VERBOSE, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+          //  curl_setopt($ch, CURLOPT_HTTPHEADER,$header);
+            curl_setopt($ch, CURLOPT_URL,$url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION,true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST,false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,false);
+      $result = curl_exec($ch);
+       if (curl_errno($ch) > 0) {
+        $result= curl_error($ch);
+        }
+
+      return $result;
+    }
+
+
+
+
 }

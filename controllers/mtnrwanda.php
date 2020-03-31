@@ -18,14 +18,41 @@ class Mtnrwanda extends Controller {
 
     function CompleteDebitRequest($req=false){
 
-        $service_id = 2741;
         $xml_request = file_get_contents('php://input');
         $log_file_name = $this->model->log->LogRequest('req_from_mtn',$xml_request,1);
-        $get_http_response_code ='HTTP Response code: 200';
-        echo $get_http_response_code;
 
-      //  echo '<ns0:debitcompletedresponse xmlns:ns0="http://www.ericsson.com/em/emm/callback/v1_0"/>';
-        //$this->model->ProcessThirdPartyPayment($service_id, $log_file_name);
+        //release client
+        while(ob_get_level())ob_end_clean();
+        ignore_user_abort();
+        ob_start();
+
+        // Send the response
+$get_http_response_code ='<?xml version="1.0" encoding="UTF-8"?>
+<debitcompletedresponse xmlns="http://www.ericsson.com/em/emm"/>';
+        echo $get_http_response_code;
+        $size = ob_get_length();
+        // Disable compression (in case content length is compressed).
+        header("Content-Encoding: none");
+        header("Content-Length:".$size);
+        // Close the connection.
+        header("Connection: close");
+        // Flush all output.
+        ob_end_flush();
+        ob_flush();
+        flush();
+          if (is_callable('fastcgi_finish_request')) {
+        /*
+         * This works in Nginx but the next approach not
+         */
+            fastcgi_finish_request();// important when using php-fpm!
+            }
+  // Close current session (if it exists).
+          if (session_id()) {
+              session_write_close();
+          }
+
+        $req =$this->model->ProcessDebitCompleted($xml_request,'req_from_mtn');
+
     }
 
 
