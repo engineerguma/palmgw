@@ -16,7 +16,7 @@ class Mtnrwanda extends Controller {
         exit();
     }
 
-    function CompleteDebitRequest($req=false){
+    function DebitCompleted($req=false){
 
         $xml_request = file_get_contents('php://input');
         $log_file_name = $this->model->log->LogRequest('req_from_mtn',$xml_request,1);
