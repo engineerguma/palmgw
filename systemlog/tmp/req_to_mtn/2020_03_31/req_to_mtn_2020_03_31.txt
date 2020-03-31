@@ -1,0 +1,10 @@
+<li><a href="" class="failed">2020-03-31 07:40:59 [LOG ENTRY] <ns2:debitrequest xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+<fromfri>FRI:250788312610/MSISDN</fromfri>
+<tofri>FRI:palmkash.sp/USER</tofri>
+<amount>
+<amount>200.00</amount>
+<currency>FRW</currency>
+</amount>
+<externaltransactionid>1234563690</externaltransactionid>
+<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a></li>

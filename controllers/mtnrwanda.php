@@ -29,6 +29,13 @@ class Mtnrwanda extends Controller {
     }
 
 
+    function ProcessGwDebitRequest(){
+      $service_id = 2741;
+      $xml_request = file_get_contents('php://input');
+      $response =$this->model->ProcessGwDebitRequest($xml_request);
+       echo $response;
+
+    }
 
 
 
