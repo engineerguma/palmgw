@@ -57,11 +57,37 @@ $get_http_response_code ='<?xml version="1.0" encoding="UTF-8"?>
 
 
     function ProcessGwDebitRequest(){
-      $service_id = 2741;
       $xml_request = file_get_contents('php://input');
       $response =$this->model->ProcessGwDebitRequest($xml_request);
        echo $response;
 
+    }
+
+
+    function ProcessGwCreditRequest(){
+      $xml_request = file_get_contents('php://input');
+      $response =$this->model->ProcessGwCreditRequest($xml_request);
+       echo $response;
+
+    }
+
+
+    function ProcessGwStatusRequest(){
+      $xml_request = file_get_contents('php://input');
+      $response =$this->model->ProcessGwStatusRequest($xml_request);
+       echo $response;
+
+    }
+
+
+    function CallbackTest(){
+
+      $xml_request = file_get_contents('php://input');
+      $this->model->log->LogRequest('callback_from_gw ',$xml_request,1);
+          header("content-type: application/json");
+         $array= array('status_code'=>200);
+       echo json_encode($array);
+        exit();
     }
 
 

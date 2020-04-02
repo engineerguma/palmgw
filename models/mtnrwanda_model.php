@@ -21,7 +21,28 @@ class Mtnrwanda_Model extends Model {
     $header=['Authorization: Basic '.base64_encode(MTN_USER.':'.MTN_PASS),
 'Content-Type: application/xml',
 'Accept: application/xml'];
-     $request =$this->SendByCurl(MTN_REQUEST_URL,$header,$request);
+     $request =$this->SendByCurl(MTN_REQUEST_URL.'debit',$header,$request);
+
+     return $request;
+    }
+
+    function ProcessGwCreditRequest($request){
+
+    $header=['Authorization: Basic '.base64_encode(MTN_USER.':'.MTN_PASS),
+'Content-Type: application/xml',
+'Accept: application/xml'];
+     $request =$this->SendByCurl(MTN_REQUEST_URL.'sptransfer',$header,$request);
+
+     return $request;
+    }
+
+
+    function ProcessGwStatusRequest($request){
+
+    $header=['Authorization: Basic '.base64_encode(MTN_USER.':'.MTN_PASS),
+'Content-Type: application/xml',
+'Accept: application/xml'];
+     $request =$this->SendByCurl(MTN_REQUEST_URL.'gettransactionstatus',$header,$request);
 
      return $request;
     }

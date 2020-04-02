@@ -1,0 +1,4 @@
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-02 20:00:41 [LOG ENTRY] {"operator_reference":null,"transaction_reference_number":"210010","gateway_reference":"2","transaction_status":"failed","status_code":"general_error"}</a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-02 20:11:34 [LOG ENTRY] {"operator_reference":null,"transaction_reference_number":"210011","gateway_reference":"3","transaction_status":"failed","status_code":"general_error"}</a>
+        <ol>
