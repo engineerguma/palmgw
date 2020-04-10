@@ -118,11 +118,11 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". va
 
     function ProcessGwCreditRequest($request,$log_name){
 
-            $fromfri = explode('/', $request['fromfri']);
-            $tofri = explode('/', $request['tofri']);
+            $fromfri = explode('/', $request['receivingfri']);
+            $tofri = explode('/', $request['sendingfri']);
             $request['msisdn']=substr($fromfri[0], 4);
             $request['merchant']=substr($tofri[0], 4);
-          //  print_r($request);die();
+            //print_r($request);die();
             $customer=$this->GetCustomerDetails($request['msisdn']);
               //print_r($customer);die();
               $this->log->LogRequest($log_name,"Mtndemo_Model  Customer data ". var_export($customer,true),2);
@@ -130,11 +130,11 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". va
 
                $balance =$customer[0]['account_balance']+$request['amount'];
 
-                $verify=$this->verifyTransaction($request['externaltransactionid']);
+                $verify=$this->verifyTransaction($request['providertransactionid']);
                if(count($verify)==0){
 
                $post= array();
-               $post['external_id']=$request['externaltransactionid'];
+               $post['external_id']=$request['providertransactionid'];
                $post['referenceid']=$request['referenceid'];
                $post['phonenumber']=$request['msisdn'];
                $post['transaction_type']='debit';
@@ -148,9 +148,9 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". va
 
               $response='<?xml version="1.0" encoding="UTF-8"?>
               <ns0:sptransferresponse xmlns:ns0="http://www.ericsson.com/em/emm/serviceprovider/v1_0/backend">
-              <transactionid>'.$transaction[0]['transaction_id'].'</transactionid></ns0:sptransferresponse>';
+              <transactionid>'.$momo_genID.'</transactionid></ns0:sptransferresponse>';
 
-        $this->log->LogRequest($log_name,"Mtndemo_Model  ProcessDebitCompleted Response ". var_export($respo,true),2);
+        $this->log->LogRequest($log_name,"Mtndemo_Model  ProcessDebitCompleted Response ". var_export($response,true),2);
 
             }else{
             //duplicate_trans ref
