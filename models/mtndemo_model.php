@@ -10,15 +10,16 @@ class Mtndemo_Model extends Model {
      * Core Merchant Functions
      */
 
-    function ProcessDebitRequest($request){
+    function ProcessDebitRequest($request,$log_name){
 
       $fromfri = explode('/', $request['fromfri']);
       $tofri = explode('/', $request['tofri']);
       $request['msisdn']=substr($fromfri[0], 4);
       $request['merchant']=substr($tofri[0], 4);
-      //print_r($request);die();
+    //  print_r($request);die();
       $customer=$this->GetCustomerDetails($request['msisdn']);
-
+        //print_r($customer);die();
+        $this->log->LogRequest($log_name,"Mtndemo_Model  Customer data ". var_export($customer,true),2);
        if(count($customer)>0){
          $balance =$customer[0]['account_balance']-$request['amount'];
          //print_r($request);die();
@@ -63,8 +64,13 @@ class Mtndemo_Model extends Model {
         $user=array('account_balance'=>$balance);
         $this->UpdateCustomerBalance($customer[0]['record_id'],$user);
 
-        $routing=$this->GetRouting($request['msisdn'],'debit_callback');
+        $this->log->LogRequest($log_name,"Mtndemo_Model  checking Request ". var_export($request,true),2);
+
+        $routing=$this->GetRouting($request['merchant'],'debit_callback');
+        $this->log->LogRequest($log_name,"Mtndemo_Model  GetRouting data ". var_export($routing,true),2);
+
         $transaction=$this->GetTransaction($momo_genID);
+        $this->log->LogRequest($log_name,"Mtndemo_Model  GetTransaction data ". var_export($transaction,true),2);
 
         $sendxml='<?xml version="1.0" encoding="UTF-8"?>
 <ns0:debitcompletedrequest xmlns:ns0="http://www.ericsson.com/em/emm">
@@ -76,7 +82,12 @@ class Mtndemo_Model extends Model {
    <status>SUCCESSFUL</status>
 </ns0:debitcompletedrequest>';
 
+$this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". var_export($sendxml,true),2);
+
   $respo =$this->ProcessDebitCompleted($routing[0]['routing_url'],$sendxml);
+
+  $this->log->LogRequest($log_name,"Mtndemo_Model  ProcessDebitCompleted Response ". var_export($respo,true),2);
+     exit();
 
       }else{
       //duplicate_trans ref
@@ -105,8 +116,60 @@ class Mtndemo_Model extends Model {
     return $det;
   }
 
-    function ProcessGwCreditRequest($request){
+    function ProcessGwCreditRequest($request,$log_name){
 
+            $fromfri = explode('/', $request['fromfri']);
+            $tofri = explode('/', $request['tofri']);
+            $request['msisdn']=substr($fromfri[0], 4);
+            $request['merchant']=substr($tofri[0], 4);
+          //  print_r($request);die();
+            $customer=$this->GetCustomerDetails($request['msisdn']);
+              //print_r($customer);die();
+              $this->log->LogRequest($log_name,"Mtndemo_Model  Customer data ". var_export($customer,true),2);
+             if(count($customer)>0){
+
+               $balance =$customer[0]['account_balance']+$request['amount'];
+
+                $verify=$this->verifyTransaction($request['externaltransactionid']);
+               if(count($verify)==0){
+
+               $post= array();
+               $post['external_id']=$request['externaltransactionid'];
+               $post['referenceid']=$request['referenceid'];
+               $post['phonenumber']=$request['msisdn'];
+               $post['transaction_type']='debit';
+               $post['transaction_date']=date('Y-m-d H:i:s');
+               $post['transaction_amount']=$request['amount'];
+               $post['running_balance']=$balance;
+             $momo_genID=$this->SaveTransactionData($post);
+
+              $user=array('account_balance'=>$balance);
+              $this->UpdateCustomerBalance($customer[0]['record_id'],$user);
+
+              $response='<?xml version="1.0" encoding="UTF-8"?>
+              <ns0:sptransferresponse xmlns:ns0="http://www.ericsson.com/em/emm/serviceprovider/v1_0/backend">
+              <transactionid>'.$transaction[0]['transaction_id'].'</transactionid></ns0:sptransferresponse>';
+
+        $this->log->LogRequest($log_name,"Mtndemo_Model  ProcessDebitCompleted Response ". var_export($respo,true),2);
+
+            }else{
+            //duplicate_trans ref
+         $response='<?xml version="1.0" encoding="UTF-8"?><ns0:errorResponse xmlns:ns0="http://www.ericsson.com/lwac" errorcode="REFERENCE_ID_ALREADY_IN_USE"/>';
+            }
+
+
+             }else{
+              //not found
+              $response='<?xml version="1.0" encoding="UTF-8"?><ns0:errorResponse xmlns:ns0="http://www.ericsson.com/lwac" errorcode="AUTHORIZATION_SENDER_ACCOUNT_NOT_ACTIVE"/>';
+
+             }
+           header('Content-Type: text/xml');
+           echo $response;
+           exit();
+
+
+
+/////////////
     $header=['Content-Type: application/xml',
 'Accept: application/xml'];
      $request =$this->SendByCurl(GW_REQUEST_URL.'sptransfer',$header,$request);

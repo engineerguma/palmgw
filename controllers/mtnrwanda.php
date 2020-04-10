@@ -57,9 +57,9 @@ $get_http_response_code ='<?xml version="1.0" encoding="UTF-8"?>
 
 
     function ProcessGwDebitRequest(){
-      $xml_request = file_get_contents('php://input');
-      if(empty($xml_request)==false){
-      $response =$this->model->ProcessGwDebitRequest($xml_request);
+      $request = file_get_contents('php://input');
+      if(empty($request)==false){
+      $response =$this->model->ProcessGwDebitRequest($request);
        echo $response;
      }else{
        $general=array('status'=>403,
@@ -73,9 +73,9 @@ $get_http_response_code ='<?xml version="1.0" encoding="UTF-8"?>
 
 
     function ProcessGwCreditRequest(){
-      $xml_request = file_get_contents('php://input');
-      if(empty($xml_request)==false){
-      $response =$this->model->ProcessGwCreditRequest($xml_request);
+      $request = file_get_contents('php://input');
+      if(empty($request)==false){
+      $response =$this->model->ProcessGwCreditRequest($request);
        echo $response;
      }else{
        $general=array('status'=>403,
@@ -89,9 +89,18 @@ $get_http_response_code ='<?xml version="1.0" encoding="UTF-8"?>
 
 
     function ProcessGwStatusRequest(){
-      $xml_request = file_get_contents('php://input');
-      $response =$this->model->ProcessGwStatusRequest($xml_request);
+
+      $request = file_get_contents('php://input');
+      if(empty($request)==false){
+      $response =$this->model->ProcessGwStatusRequest($request);
        echo $response;
+     }else{
+       $general=array('status'=>403,
+                      'message'=>'Forbidden');
+         header('Content-Type: application/json;charset=utf-8"');
+         echo json_encode($general,true);
+         exit();
+     }
 
     }
 
