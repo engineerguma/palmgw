@@ -38,7 +38,7 @@ class Mtndemo extends Controller {
         if(empty($xml_request)==false){
         $log_file_name = $this->model->log->LogRequest('req_from_merc',$xml_request,1);
        $post_arry=$this->model->FormatXMLTOArray($xml_request);
-        $this->model->ProcessCreditRequest($post_arry, 'req_from_merc');
+        $this->model->ProcessGwCreditRequest($post_arry, 'req_from_merc');
        }else{
 
          header("Content-type: text/xml; charset=utf-8");
