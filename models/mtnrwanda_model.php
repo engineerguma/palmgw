@@ -64,8 +64,9 @@ class Mtnrwanda_Model extends Model {
       curl_setopt($ch, CURLOPT_SSL_VERIFYHOST,false);
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,false);
       curl_setopt($ch, CURLOPT_SSLVERSION, 6);
-      curl_setopt($ch, CURLOPT_SSLCERT ,  "/home/sslcertificates/197_243_14_94.crt" );
-      curl_setopt($ch, CURLOPT_SSLKEY ,  "/home/sslcertificates/197_243_14_94.pem" );
+      curl_setopt($ch, CURLOPT_SSLCERT ,  "var/www/html/production/palmkashgw.crt" );
+      curl_setopt($ch, CURLOPT_SSLKEY ,  "var/www/html/production/palmkashgw.key" );
+      curl_setopt($ch, CURLOPT_CAINFO, '/etc/ssl/certs/m3_external_ca.crt');
        $result = curl_exec($ch);
        if (curl_errno($ch) > 0) {
         $result= curl_error($ch);

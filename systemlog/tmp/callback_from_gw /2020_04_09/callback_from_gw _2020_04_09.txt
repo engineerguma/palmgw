@@ -1,0 +1,2 @@
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-09 18:41:58 [LOG ENTRY] {"operator_reference":"200409064156","transaction_reference_number":"210012","gateway_reference":"9","transaction_status":"completed","status_code":"200"}</a>
+        <ol>

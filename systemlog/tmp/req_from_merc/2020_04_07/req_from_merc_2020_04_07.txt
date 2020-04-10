@@ -1,0 +1,348 @@
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 09:56:13 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 09:57:02 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 09:57:43 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 09:58:09 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 17:19:33 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:25:31 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:26:27 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:27:07 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:34:22 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:34:23 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:34:24 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:35:09 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:36:25 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:36:26 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:36:45 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:37:24 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:38:21 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250786991473/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:40:05 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:40:43 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:41:01 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 19:42:32 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 21:27:37 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 22:11:40 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 22:11:55 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 22:17:18 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 22:17:54 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 22:18:29 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 22:19:01 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563690</externaltransactionid>
+	<referenceid>12345678234</referenceid>
+</ns2:debitrequest></a>
+        <ol>
+<ul class="rectangle-list"><li><a href="" class="leading">2020-04-07 22:27:27 [LOG ENTRY] <ns2:debitrequest
+	xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0">
+	<fromfri>FRI:250780244603/MSISDN</fromfri>
+	<tofri>FRI:palmkash.sp/USER</tofri>
+	<amount>
+		<amount>200.00</amount>
+		<currency>FRW</currency>
+	</amount>
+	<externaltransactionid>1234563691</externaltransactionid>
+	<referenceid>12345678235</referenceid>
+</ns2:debitrequest></a>
+        <ol>
