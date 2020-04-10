@@ -1,6 +1,0 @@
-<ul class="rectangle-list"><li><a href="" class="leading">2020-04-03 19:16:38 [LOG ENTRY] {"operator_reference":null,"transaction_reference_number":"210002","gateway_reference":"4","transaction_status":"failed","status_code":"general_error"}</a>
-        <ol>
-<ul class="rectangle-list"><li><a href="" class="leading">2020-04-03 19:19:12 [LOG ENTRY] {"operator_reference":null,"transaction_reference_number":"210003","gateway_reference":"5","transaction_status":"failed","status_code":"general_error"}</a>
-        <ol>
-<ul class="rectangle-list"><li><a href="" class="leading">2020-04-03 19:27:33 [LOG ENTRY] {"operator_reference":null,"transaction_reference_number":"210004","gateway_reference":"6","transaction_status":"failed","status_code":"general_error"}</a>
-        <ol>
