@@ -137,7 +137,7 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". va
                $post['external_id']=$request['providertransactionid'];
                $post['referenceid']=$request['referenceid'];
                $post['phonenumber']=$request['msisdn'];
-               $post['transaction_type']='debit';
+               $post['transaction_type']='credit';
                $post['transaction_date']=date('Y-m-d H:i:s');
                $post['transaction_amount']=$request['amount'];
                $post['running_balance']=$balance;
@@ -163,6 +163,42 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". va
               $response='<?xml version="1.0" encoding="UTF-8"?><ns0:errorResponse xmlns:ns0="http://www.ericsson.com/lwac" errorcode="AUTHORIZATION_SENDER_ACCOUNT_NOT_ACTIVE"/>';
 
              }
+           header('Content-Type: text/xml');
+           echo $response;
+           exit();
+
+
+
+/////////////
+    $header=['Content-Type: application/xml',
+'Accept: application/xml'];
+     $request =$this->SendByCurl(GW_REQUEST_URL.'sptransfer',$header,$request);
+
+     return $request;
+    }
+
+
+    function ProcessGwStatustRequest($request,$log_name){
+
+          //  print_r($request);die();
+              //print_r($customer);die();
+
+                $verify=$this->verifyTransaction($request['referenceid']);
+               if(count($verify)>0){
+              $response='<?xml version="1.0" encoding="UTF-8"?>
+              <ns0:gettransactionstatusresponse xmlns:ns0="http://www.ericsson.com/em/emm/financial/v1_0">
+              <transactionid>'.$verify[0]['transaction_id'].'</transactionid>
+              <status>SUCCESSFUL</status>
+              </ns0:gettransactionstatusresponse>';
+
+             $this->log->LogRequest($log_name,"Mtndemo_Model  ProcessGwStatustRequest Response ". var_export($response,true),2);
+
+            }else{
+
+           $response='<?xml version="1.0" encoding="UTF-8"?><ns0:errorResponse xmlns:ns0="http://www.ericsson.com/lwac" errorcode="NOT_FOUND"/>';
+
+              }
+
            header('Content-Type: text/xml');
            echo $response;
            exit();

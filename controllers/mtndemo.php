@@ -50,6 +50,23 @@ class Mtndemo extends Controller {
     }
 
 
+        function ReceiveStatusRequest($req=false){
+            $xml_request = file_get_contents('php://input');
+            if(empty($xml_request)==false){
+            $log_file_name = $this->model->log->LogRequest('req_from_merc',$xml_request,1);
+           $post_arry=$this->model->FormatXMLTOArray($xml_request);
+            $this->model->ProcessGwStatustRequest($post_arry, 'req_from_merc');
+           }else{
+
+             header("Content-type: text/xml; charset=utf-8");
+          $error ='<?xml version="1.0" encoding="UTF-8"?>
+          <ns0:errorResponse xmlns:ns0="http://www.ericsson.com/lwac" errorcode="Invalid_request"/>';
+              echo $error;
+              exit();
+           }
+        }
+
+
 
 
 
