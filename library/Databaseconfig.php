@@ -93,7 +93,7 @@ class Databaseconfig extends PDO {
     public function DeleteData($table, $where, $limit = 1) {
         $sql_statement = "DELETE FROM $table WHERE $where LIMIT $limit";
         return $this->exec($sql_statement);
-        $now = date('Y-m-d H:i:s');
+        /*$now = date('Y-m-d H:i:s');
 	    	if(isset($_SESSION['uid'])){
 		      $user_id = $_SESSION['uid'];
 	      	}else{
@@ -106,7 +106,7 @@ class Databaseconfig extends PDO {
             'query_executed' => $sql_statement,
             'user_id' => $user_id
         );
-        $this->DBOperationLog($logdata);
+        $this->DBOperationLog($logdata);*/
     }
 
     public function DBOperationLog($data) {
