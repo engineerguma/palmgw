@@ -51,7 +51,7 @@ $get_http_response_code ='<?xml version="1.0" encoding="UTF-8"?>
               session_write_close();
           }
 
-        $req =$this->model->ProcessDebitCompleted($xml_request,'req_from_mtn');
+        $this->model->ProcessDebitCompleted($xml_request,'req_from_mtn');
 
     }
 
