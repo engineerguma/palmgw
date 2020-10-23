@@ -1,7 +1,7 @@
 <?php
 
 
-class Mtndemo extends Controller {
+class Airteldemo extends Controller {
 
     function __construct() {
         parent::__construct();
@@ -21,7 +21,6 @@ class Mtndemo extends Controller {
       if(empty($xml_request)==false){
         $log_file_name = $this->model->log->LogRequest('req_from_merc',$xml_request,1);
       $post_arry=$this->model->FormatXMLTOArray($xml_request);
-    //  print_r($post_arry);die();
         $this->model->ProcessDebitRequest($post_arry, 'req_from_merc');
       }else{
 
@@ -38,6 +37,7 @@ class Mtndemo extends Controller {
         if(empty($xml_request)==false){
         $log_file_name = $this->model->log->LogRequest('req_from_merc',$xml_request,1);
        $post_arry=$this->model->FormatXMLTOArray($xml_request);
+        // print_r($post_arry);die();
         $this->model->ProcessGwCreditRequest($post_arry, 'req_from_merc');
        }else{
 

@@ -1,6 +1,6 @@
 <?php
 
-class Mtndemo_Model extends Model {
+class Airteldemo_Model extends Model {
 
     function __construct() {
         parent::__construct();
@@ -12,14 +12,13 @@ class Mtndemo_Model extends Model {
 
     function ProcessDebitRequest($request,$log_name){
 
-      $fromfri = explode('/', $request['fromfri']);
-      $tofri = explode('/', $request['tofri']);
-      $request['msisdn']=substr($fromfri[0], 4);
-      $request['merchant']=substr($tofri[0], 4);
-    //  print_r($request);die();
+
+      $request['msisdn']='250'.$request['msisdn'];
+      $request['merchant']=$request['msisdn2'];
+    // print_r($request);die();
       $customer=$this->GetCustomerDetails($request['msisdn']);
         //print_r($customer);die();
-        $this->log->LogRequest($log_name,"Mtndemo_Model  Customer data ". var_export($customer,true),2);
+        $this->log->LogRequest($log_name,"Airteldemo_Model  Customer data ". var_export($customer,true),2);
        if(count($customer)>0){
          $balance =$customer[0]['account_balance']-$request['amount'];
          //print_r($request);die();
@@ -29,8 +28,8 @@ class Mtndemo_Model extends Model {
          if(count($verify)==0){
 
          $post= array();
-         $post['external_id']=$request['externaltransactionid'];
-         $post['referenceid']=$request['referenceid'];
+         $post['external_id']=$request['exttrid'];
+         $post['referenceid']=$request['reference'];
          $post['phonenumber']=$request['msisdn'];
          $post['transaction_type']='debit';
          $post['transaction_date']=date('Y-m-d H:i:s');
@@ -44,7 +43,7 @@ class Mtndemo_Model extends Model {
        ignore_user_abort();
        ob_start();
        // Send the response
-        echo '<?xml version="1.0" encoding="UTF-8"?> <ns0:debitresponse xmlns:ns0="http://www.ericsson.com/em/emm/financial/v1_0"><transactionid>'.$momo_genID.'</transactionid><status>PENDING</status></ns0:debitresponse>';
+        echo '<COMMAND><TXNSTATUS>200</TXNSTATUS><MESSAGE>Success</MESSAGE><EXTRA>$EXTRA</EXTRA><TXNID>$TXNID</TXNID></COMMAND>';
        $size = ob_get_length();
        // Disable compression (in case content length is compressed).
        header("Content-Encoding: none");
@@ -64,29 +63,27 @@ class Mtndemo_Model extends Model {
         $user=array('account_balance'=>$balance);
         $this->UpdateCustomerBalance($customer[0]['record_id'],$user);
 
-        $this->log->LogRequest($log_name,"Mtndemo_Model  checking Request ". var_export($request,true),2);
+        $this->log->LogRequest($log_name,"Airteldemo_Model  checking Request ". var_export($request,true),2);
 
         $routing=$this->GetRouting($request['merchant'],'debit_callback');
-        $this->log->LogRequest($log_name,"Mtndemo_Model  GetRouting data ". var_export($routing,true),2);
+        $this->log->LogRequest($log_name,"Airteldemo_Model  GetRouting data ". var_export($routing,true),2);
 
         $transaction=$this->GetTransaction($momo_genID);
-        $this->log->LogRequest($log_name,"Mtndemo_Model  GetTransaction data ". var_export($transaction,true),2);
+        $this->log->LogRequest($log_name,"Airteldemo_Model  GetTransaction data ". var_export($transaction,true),2);
 
-        $sendxml='<?xml version="1.0" encoding="UTF-8"?>
-<ns0:debitcompletedrequest xmlns:ns0="http://www.ericsson.com/em/emm">
-   <transactionid>'.$transaction[0]['transaction_id'].'</transactionid>
-   <externaltransactionid>'.$transaction[0]['external_id'].'</externaltransactionid>
-   <receiverinfo>
-      <fri>'.$request['tofri'].'</fri>
-   </receiverinfo>
-   <status>SUCCESSFUL</status>
-</ns0:debitcompletedrequest>';
+        $sendxml='COMMAND>
+                <TYPE>CALLBCKREQ</TYPE>
+                <TXNID>'.$transaction[0]['transaction_id'].'</TXNID>
+                <EXTTRID>'.$transaction[0]['external_id'].'</EXTTRID>
+                <TXNSTATUS>200</TXNSTATUS>
+                <MESSAGE>SUCCESS</MESSAGE>
+                </COMMAND>';
 
-$this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". var_export($sendxml,true),2);
+$this->log->LogRequest($log_name,"Airteldemo_Model  Completed XML TO Merchant ". var_export($sendxml,true),2);
 
   $respo =$this->ProcessDebitCompleted($routing[0]['routing_url'],$sendxml);
 
-  $this->log->LogRequest($log_name,"Mtndemo_Model  ProcessDebitCompleted Response ". var_export($respo,true),2);
+  $this->log->LogRequest($log_name,"Airteldemo_Model  ProcessDebitCompleted Response ". var_export($respo,true),2);
      exit();
 
       }else{
@@ -97,7 +94,7 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". va
 
        }else{
        //balance_insufficient
-    $response='<?xml version="1.0" encoding="UTF-8"?><ns0:errorResponse xmlns:ns0="http://www.ericsson.com/lwac" errorcode="TARGET_AUTHORIZATION_ERROR"/>';
+    $response='<COMMAND><TYPE>TXNEQRESP</TYPE><TXNID>MP200914.1350.I68916</TXNID><EXTTRID>'.$request['externaltransactionid'].'</EXTTRID><TXNSTATUS>TF</TXNSTATUS><MESSAGE>Dear Customer, you have insufficient funds to complete this transaction. Kindly top up and try again. Thank you.</MESSAGE></COMMAND>';
        }
 
        }else{
@@ -117,25 +114,24 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". va
   }
 
     function ProcessGwCreditRequest($request,$log_name){
+  //print_r($request);die();
 
-            $fromfri = explode('/', $request['receivingfri']);
-            $tofri = explode('/', $request['sendingfri']);
-            $request['msisdn']=substr($fromfri[0], 4);
-            $request['merchant']=substr($tofri[0], 4);
-            //print_r($request);die();
+            $request['msisdn']='250'.$request['msisdn'];;
+            $request['merchant']=$request['msisdn2'];
+
             $customer=$this->GetCustomerDetails($request['msisdn']);
               //print_r($customer);die();
-              $this->log->LogRequest($log_name,"Mtndemo_Model  Customer data ". var_export($customer,true),2);
+              $this->log->LogRequest($log_name,"Airteldemo_Model  Customer data ". var_export($customer,true),2);
              if(count($customer)>0){
 
                $balance =$customer[0]['account_balance']+$request['amount'];
 
-                $verify=$this->verifyTransaction($request['providertransactionid']);
+                $verify=$this->verifyTransaction($request['exttrid']);
                if(count($verify)==0){
 
                $post= array();
-               $post['external_id']=$request['providertransactionid'];
-               $post['referenceid']=$request['referenceid'];
+               $post['external_id']=$request['exttrid'];
+               $post['referenceid']=$request['reference_no'];
                $post['phonenumber']=$request['msisdn'];
                $post['transaction_type']='credit';
                $post['transaction_date']=date('Y-m-d H:i:s');
@@ -146,21 +142,25 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". va
               $user=array('account_balance'=>$balance);
               $this->UpdateCustomerBalance($customer[0]['record_id'],$user);
 
-              $response='<?xml version="1.0" encoding="UTF-8"?>
-              <ns0:sptransferresponse xmlns:ns0="http://www.ericsson.com/em/emm/serviceprovider/v1_0/backend">
-              <transactionid>'.$momo_genID.'</transactionid></ns0:sptransferresponse>';
+              $response='<COMMAND><TXNSTATUS>200</TXNSTATUS><MESSAGE>Success</MESSAGE>
+              <TXNID>'.$momo_genID.' </TXNID>
+              </COMMAND>';
 
-        $this->log->LogRequest($log_name,"Mtndemo_Model  ProcessDebitCompleted Response ". var_export($response,true),2);
+        $this->log->LogRequest($log_name,"Airteldemo_Model  ProcessDebitCompleted Response ". var_export($response,true),2);
 
             }else{
             //duplicate_trans ref
-         $response='<?xml version="1.0" encoding="UTF-8"?><ns0:errorResponse xmlns:ns0="http://www.ericsson.com/lwac" errorcode="REFERENCE_ID_ALREADY_IN_USE"/>';
+         $response='<COMMAND><TXNSTATUS>200</TXNSTATUS><MESSAGE>fail</MESSAGE>
+         <TXNID></TXNID>
+         </COMMAND>';
             }
 
 
              }else{
               //not found
-              $response='<?xml version="1.0" encoding="UTF-8"?><ns0:errorResponse xmlns:ns0="http://www.ericsson.com/lwac" errorcode="AUTHORIZATION_SENDER_ACCOUNT_NOT_ACTIVE"/>';
+              $response='<COMMAND><TXNSTATUS>200</TXNSTATUS><MESSAGE>fail</MESSAGE>
+              <TXNID></TXNID>
+              </COMMAND>';
 
              }
            header('Content-Type: text/xml');
@@ -180,7 +180,7 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". va
 
     function ProcessGwStatustRequest($request,$log_name){
 
-          //  print_r($request);die();
+            //print_r($request);die();
               //print_r($customer);die();
 
                 $verify=$this->verifyTransaction($request['referenceid']);
@@ -191,7 +191,7 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". va
               <status>SUCCESSFUL</status>
               </ns0:gettransactionstatusresponse>';
 
-             $this->log->LogRequest($log_name,"Mtndemo_Model  ProcessGwStatustRequest Response ". var_export($response,true),2);
+             $this->log->LogRequest($log_name,"Airteldemo_Model  ProcessGwStatustRequest Response ". var_export($response,true),2);
 
             }else{
 

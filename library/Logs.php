@@ -13,48 +13,44 @@ class Logs {
 		$logtofile=null;
 		$todays_folder = 'systemlog/tmp/'.$fl.'/' . date('Y_m_d');
         $filename = $todays_folder.'/' . $fl . '_' . $filext . '.txt';
+
 	    if (is_dir($todays_folder)) {
-	    $logtofile = $this->PrepareLog($log, $lv, $id);
+            //print_r("Is folder");die();
+	    $this->PrepareLog($filename,$log, $lv, $id);
         } else {
-            mkdir($todays_folder,0777, true);
-	    $logtofile = $this->PrepareLog($log, $lv, $id);
+        //  print_r("not folder");die();
+
+           mkdir($todays_folder,0777, true);
+	     $this->PrepareLog($filename,$log, $lv, $id);
         }
-	   file_put_contents($filename, $logtofile . "\n", FILE_APPEND);
 
     }
 
 
 
-    function PrepareLog($log, $level, $id = false) {
-        $logcont = '';
-        if ($id == 1) {
-            $class = 'info';
-        } elseif ($id == 2) {
-            $class = 'warning';
-        } elseif ($id == 3) {
-            $class = 'observe';
-        } elseif ($id == 4) {
-            $class = 'successful';
-        } else {
-            $class = 'failed';
-        }
+    function PrepareLog($file_name,$log, $level, $id = false) {
 
         switch ($level) {
             case 1:
-                $logcont = '<ul class="rectangle-list"><li><a href="" class="leading">' . date('Y-m-d H:i:s') . ' [LOG ENTRY] ' . $log . '</a>
-        <ol>';
+
+            file_put_contents($file_name, '[LOG START]' . "\n", FILE_APPEND);
+
+            file_put_contents($file_name, '[' . date('Y-m-d H:i:s') . '] ' . $log . "\n", FILE_APPEND);
+
                 break;
             case 2:
-                $logcont .='<li><a href="" class="' . $class . '">' . date('Y-m-d H:i:s') . ' [LOG ENTRY] ' . $log . '</a></li>';
+            file_put_contents($file_name, '[' . date('Y-m-d H:i:s') . '] ' . $log . "\n", FILE_APPEND);
                 break;
             case 3:
-                $logcont .='<li><a href="" class="' . $class . '">' . date('Y-m-d H:i:s') . ' [LOG ENTRY] ' . $log . '</a></li></ol>
-    </li></ul>';
+
+            file_put_contents($file_name, '[' . date('Y-m-d H:i:s') . '] ' . $log . "\n", FILE_APPEND);
+            //End Log
+            file_put_contents($file_name, '[LOG STOP]' . "\n", FILE_APPEND);
                 break;
             default:
                 break;
         }
-        return $logcont;
+      //  return $logcont;
     }
 
 }
