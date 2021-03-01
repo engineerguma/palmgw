@@ -36,7 +36,7 @@ class Model {
 
     function GetRouting($ref,$type) {
           // print_r($update_data);die();
-      return $this->db->SelectData("Select * from merchant_routing where merchant_ref='".$ref."' AND routing_type='".$type."' ");
+      return $this->db->SelectData("Select * from merchant_routings where merchant_ref='".$ref."' AND routing_type='".$type."' ");
     }
 
 

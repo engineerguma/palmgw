@@ -82,7 +82,7 @@ class Mtndemo_Model extends Model {
    <status>SUCCESSFUL</status>
 </ns0:debitcompletedrequest>';
 
-$this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant ". var_export($sendxml,true),2);
+$this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant URL ".$routing[0]['routing_url']."  Request ". var_export($sendxml,true),2);
 
   $respo =$this->ProcessDebitCompleted($routing[0]['routing_url'],$sendxml);
 
