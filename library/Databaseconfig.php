@@ -37,7 +37,7 @@ class Databaseconfig extends PDO {
             'data_set' => $fieldlog,
             'user_id' => $user_id
         );
-        $this->DBOperationLog($logdata);
+       // $this->DBOperationLog($logdata);
 
         return $res;
     }
@@ -76,7 +76,7 @@ class Databaseconfig extends PDO {
             'data_set' => $fieldlog,
             'user_id' => $user_id
         );
-        $this->DBOperationLog($logdata);
+       // $this->DBOperationLog($logdata);
     }
 
     public function SelectData($sql, $data = array(), $fetchMode = PDO::FETCH_ASSOC) {
