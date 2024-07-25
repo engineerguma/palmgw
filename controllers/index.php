@@ -7,6 +7,8 @@ class Index extends Controller {
     }
 
     function Index(){
+
+        header('Content-Type: application/json');       
 	    $general=array('status'=>403,
                      'message'=>'Forbidden');
         echo json_encode($general);
