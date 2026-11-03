@@ -25,8 +25,6 @@ class Mtndemo_Model extends Model {
          //print_r($request);die();
           if($customer[0]['account_balance']>$request['amount']){
 
-          $verify=$this->verifyTransaction($request['externaltransactionid']);
-         if(count($verify)==0){
 
          $post= array();
          $post['external_id']=$request['externaltransactionid'];
@@ -89,12 +87,6 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant URL "
   $this->log->LogRequest($log_name,"Mtndemo_Model  ProcessDebitCompleted Response ". var_export($respo,true),2);
      exit();
 
-      }else{
-      //duplicate_trans ref
-   $response='<?xml version="1.0" encoding="UTF-8"?><ns0:errorResponse xmlns:ns0="http://www.ericsson.com/lwac" errorcode="REFERENCE_ID_ALREADY_IN_USE"/>';
-      }
-
-
        }else{
        //balance_insufficient
     $response='<?xml version="1.0" encoding="UTF-8"?><ns0:errorResponse xmlns:ns0="http://www.ericsson.com/lwac" errorcode="TARGET_AUTHORIZATION_ERROR"/>';
@@ -146,9 +138,10 @@ $this->log->LogRequest($log_name,"Mtndemo_Model  Completed XML TO Merchant URL "
               $user=array('account_balance'=>$balance);
               $this->UpdateCustomerBalance($customer[0]['record_id'],$user);
 
-              $response='<?xml version="1.0" encoding="UTF-8"?>
-              <ns0:sptransferresponse xmlns:ns0="http://www.ericsson.com/em/emm/serviceprovider/v1_0/backend">
-              <transactionid>'.$momo_genID.'</transactionid></ns0:sptransferresponse>';
+              $response='<ns0:sptransferresponse
+                xmlns:ns0="http://www.ericsson.com/em/emm/serviceprovider/v1_0/backend">
+                <transactionid>'.$momo_genID.'</transactionid>
+              </ns0:sptransferresponse>';
 
         $this->log->LogRequest($log_name,"Mtndemo_Model  ProcessDebitCompleted Response ". var_export($response,true),2);
 
